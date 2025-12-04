@@ -640,9 +640,10 @@
 
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const items = cart.map(item => ({
-                name: item.name,
+                title: item.name,
                 quantity: item.quantity,
-                price: Math.round(item.price * 100)
+                unitPrice: Math.round(item.price * 100),
+                tangible: true
             }));
 
             try {
