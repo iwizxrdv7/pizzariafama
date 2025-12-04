@@ -23,8 +23,8 @@ export default async function handler(req, res) {
         const response = await fetch('https://api.conta.paybeehive.com.br/v1/transactions', {
             method: 'POST',
             headers: {
-                "Authorization": `Basic ${token}`,
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + Buffer.from(SECRET_KEY + ':x').toString('base64')
             },
             body: JSON.stringify(req.body)
         });
@@ -41,4 +41,3 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 }
-
