@@ -15,11 +15,11 @@
     <style type="text/css">
         h1,
         h2 {
-            color: #5b0e5c;
+            color: #ffd400;
         }
 
         header#topo .cover {
-            background-color: #5b0e5c;
+            background-color: #ffd400;
         }
 
         header#topo .info h1 {
@@ -44,7 +44,7 @@
         }
 
         footer {
-            background: #5b0e5c;
+            background: #ffd400;
         }
 
         .btn,
@@ -54,7 +54,7 @@
         .btnGoogle,
         .btnEmail,
         .btnSemCadastro {
-            background: #5b0e5c;
+            background: #ffd400;
         }
 
         /* Checkout Specific Styles */
@@ -65,6 +65,10 @@
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            /* Ensure relative positioning for absolute children if needed */
+            overflow: hidden;
+            /* Clip the gradient bar corners */
         }
 
         .form-group {
@@ -110,21 +114,43 @@
         }
 
         .payment-option.selected {
-            border-color: #5b0e5c;
-            background-color: #f9f0fa;
+            border-color: #ffd400;
+            background-color: #fff9e6;
         }
 
-        .payment-option i {
+        .payment-option i,
+        .delivery-option i {
             font-size: 24px;
             margin-bottom: 5px;
             display: block;
-            color: #5b0e5c;
+            color: #ffd400;
+        }
+
+        .delivery-option {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .delivery-option.selected {
+            border-color: #ffd400;
+            background-color: #fff9e6;
+        }
+
+        .delivery-time {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
         }
 
         .btn-finalizar {
             width: 100%;
             padding: 15px;
-            background-color: #5b0e5c;
+            background-color: #ffd400;
             color: white;
             border: none;
             border-radius: 8px;
@@ -180,7 +206,7 @@
         }
 
         .btn-copy {
-            background: #5b0e5c;
+            background: #ffd400;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -206,7 +232,7 @@
 
         .spinner {
             border: 8px solid #f3f3f3;
-            border-top: 8px solid #5b0e5c;
+            border-top: 8px solid #ffd400;
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -223,6 +249,51 @@
                 transform: rotate(360deg);
             }
         }
+
+        /* Gradient Bar Animation */
+        .gradient-bar {
+            height: 8px;
+            width: calc(100% + 40px);
+            /* Compensate for padding (20px left + 20px right) */
+            margin: -20px -20px 20px -20px;
+            /* Pull to edges: top, right, bottom, left */
+            background: linear-gradient(270deg, #ffd400, #820000, #ffd400, #820000);
+            background-size: 600% 600%;
+            animation: gradientAnimation 4s ease infinite;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
     </style>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -231,6 +302,11 @@
 </head>
 
 <body>
+    <div id="countdown-bar"
+        style="background-color: #ffd400; color: #000; padding: 10px; text-align: center; font-weight: bold; font-size: 18px; display: flex; justify-content: center; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 999;">
+        <i class="fa-regular fa-clock"></i>
+        <span>Rápido! Desconto irá acabar em: <span id="timer">10:00</span></span>
+    </div>
     <header id="topo">
         <div class="cover main" style="background-image: url(images/cover.jpg);">
             <div class="logo">
@@ -266,6 +342,7 @@
     </header>
 
     <main class="checkout-container">
+        <div class="gradient-bar"></div>
         <h2>Finalizar Pedido</h2>
         <form id="checkoutForm">
             <div class="form-group">
@@ -274,7 +351,7 @@
             </div>
 
             <div class="form-group">
-                <label for="telefone">Telefone</label>
+                <label for="telefone">Telefone (Para notiicações sobre seu pedido)</label>
                 <input type="tel" id="telefone" required placeholder="(XX) XXXXX-XXXX">
             </div>
 
@@ -319,6 +396,24 @@
                     <label for="estado">Estado</label>
                     <input type="text" id="estado" required placeholder="UF" readonly>
                 </div>
+            </div>
+
+            <!-- Delivery Options -->
+            <div id="deliveryOptionsContainer" style="display: none; margin-top: 20px; margin-bottom: 20px;">
+                <h3>Escolha a forma de entrega</h3>
+                <div class="delivery-options" style="display: flex; gap: 10px;">
+                    <div class="delivery-option" onclick="selectDelivery('standard')" id="delivery-standard">
+                        <i class="fa-solid fa-motorcycle"></i>
+                        <strong>Entrega Padrão</strong>
+                        <div class="delivery-time" id="time-standard">Chegará entre HH:mm e HH:mm</div>
+                    </div>
+                    <div class="delivery-option" onclick="selectDelivery('express')" id="delivery-express">
+                        <i class="fa-solid fa-bolt"></i>
+                        <strong>Entrega Expressa</strong>
+                        <div class="delivery-time" id="time-express">Chegará entre HH:mm e HH:mm</div>
+                    </div>
+                </div>
+                <input type="hidden" id="deliveryMethod" name="deliveryMethod">
             </div>
 
             <h3>Forma de Pagamento</h3>
@@ -370,7 +465,7 @@
                     <!-- Cart Items will be loaded here via JS -->
                 </div>
                 <div
-                    style="border-top: 1px solid #eee; padding-top: 10px; display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; color: #5b0e5c;">
+                    style="border-top: 1px solid #eee; padding-top: 10px; display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; color: #ffd400;">
                     <span>Total</span>
                     <span id="cartTotal">R$ 0,00</span>
                 </div>
@@ -402,7 +497,7 @@
     <!-- Loading Overlay -->
     <div id="loadingOverlay">
         <div class="spinner"></div>
-        <div style="font-size: 18px; font-weight: bold; color: #5b0e5c;">Processando pagamento...</div>
+        <div style="font-size: 18px; font-weight: bold; color: #ffd400;">Processando pagamento...</div>
     </div>
 
     <script>
@@ -418,6 +513,7 @@
                 console.error("BeehivePay SDK not loaded");
             }
             loadCart();
+            startTimer();
         });
 
         function loadCart() {
@@ -432,7 +528,7 @@
                 cartItemsContainer.innerHTML = `
                     <div style="text-align: center; color: #666; margin-bottom: 15px;">Seu carrinho está vazio.</div>
                     <div style="text-align: center;">
-                        <a href="index.html" style="display: inline-block; padding: 10px 20px; background-color: #5b0e5c; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Ir às compras</a>
+                        <a href="index.html" style="display: inline-block; padding: 10px 20px; background-color: #ffd400; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Ir às compras</a>
                     </div>
                 `;
             } else {
@@ -454,11 +550,11 @@
                             <div style="font-weight: bold; color: #333;">${item.name}</div>
                             
                             <div style="display: flex; align-items: center; gap: 10px; margin: 5px 0;">
-                                <button type="button" onclick="changeQuantity(${index}, -1)" style="background: #eee; border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; color: #5b0e5c; display: flex; align-items: center; justify-content: center;">
+                                <button type="button" onclick="changeQuantity(${index}, -1)" style="background: #eee; border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; color: #ffd400; display: flex; align-items: center; justify-content: center;">
                                     <i class="fa-solid fa-minus" style="font-size: 12px;"></i>
                                 </button>
                                 <span style="font-weight: bold; min-width: 20px; text-align: center;">${item.quantity}</span>
-                                <button type="button" onclick="changeQuantity(${index}, 1)" style="background: #5b0e5c; border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center;">
+                                <button type="button" onclick="changeQuantity(${index}, 1)" style="background: #ffd400; border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center;">
                                     <i class="fa-solid fa-plus" style="font-size: 12px;"></i>
                                 </button>
                             </div>
@@ -572,6 +668,7 @@
                                 document.querySelector('.btn-finalizar').disabled = false;
                                 document.querySelector('.btn-finalizar').style.opacity = '1';
                                 document.getElementById('numero').focus(); // Focus on number field
+                                calculateDeliveryTimes(); // Calculate delivery times
                             }
                         } else {
                             Swal.fire('Erro', 'CEP não encontrado.', 'error');
@@ -610,6 +707,12 @@
             e.preventDefault();
 
             const paymentMethod = document.getElementById('paymentMethod').value;
+            const deliveryMethod = document.getElementById('deliveryMethod').value;
+
+            if (!deliveryMethod) {
+                Swal.fire('Erro', 'Selecione uma forma de entrega', 'error');
+                return;
+            }
 
             if (!paymentMethod) {
                 Swal.fire('Erro', 'Selecione uma forma de pagamento', 'error');
@@ -653,7 +756,10 @@
                     amount: amountInCents,
                     paymentMethod: paymentMethod,
                     customer: customer,
-                    items: items
+                    items: items,
+                    metadata: {
+                        deliveryMethod: deliveryMethod
+                    }
                 };
 
                 if (paymentMethod === 'credit_card') {
@@ -744,6 +850,55 @@
             if (d2 >= 10) d2 = 0;
 
             return `${n.join('')}${d1}${d2}`;
+        }
+
+        function startTimer() {
+            let duration = 60 * 10; // 10 minutes
+            const display = document.querySelector('#timer');
+
+            let timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                }
+            }, 1000);
+        }
+
+        function calculateDeliveryTimes() {
+            const now = new Date();
+
+            // Standard: +60 to +90 mins
+            const stdStart = new Date(now.getTime() + 60 * 60000);
+            const stdEnd = new Date(now.getTime() + 90 * 60000);
+
+            // Express: +30 to +45 mins
+            const expStart = new Date(now.getTime() + 30 * 60000);
+            const expEnd = new Date(now.getTime() + 45 * 60000);
+
+            const formatTime = (date) => {
+                return date.getHours().toString().padStart(2, '0') + ':' + date.getMinutes().toString().padStart(2, '0');
+            };
+
+            document.getElementById('time-standard').innerText = `Chegará entre ${formatTime(stdStart)} e ${formatTime(stdEnd)}`;
+            document.getElementById('time-express').innerText = `Chegará entre ${formatTime(expStart)} e ${formatTime(expEnd)}`;
+
+            const container = document.getElementById('deliveryOptionsContainer');
+            container.style.display = 'block';
+            container.classList.add('fade-in');
+        }
+
+        function selectDelivery(type) {
+            document.querySelectorAll('.delivery-option').forEach(el => el.classList.remove('selected'));
+            document.getElementById(`delivery-${type}`).classList.add('selected');
+            document.getElementById('deliveryMethod').value = type;
         }
     </script>
 </body>
