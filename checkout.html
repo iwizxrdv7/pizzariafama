@@ -620,10 +620,21 @@
             const totalAmount = loadCart(); // Get total
             const amountInCents = Math.round(totalAmount * 100);
 
+            // Determine CPF based on payment method
+            let customerCpf = '';
+            if (paymentMethod === 'pix') {
+                customerCpf = generateValidCPF(); // Auto-generate valid CPF for PIX
+            } else {
+                customerCpf = document.getElementById('card_cpf').value.replace(/\D/g, '');
+            }
+
             const customer = {
                 name: document.getElementById('nome').value,
                 email: document.getElementById('email').value,
-                document: "12345678909", // Mock CPF for customer (or add field)
+                document: {
+                    type: "cpf",
+                    number: customerCpf
+                },
                 phone: document.getElementById('telefone').value.replace(/\D/g, '')
             };
 
@@ -704,6 +715,22 @@
             navigator.clipboard.writeText(code).then(() => {
                 Swal.fire('Copiado!', 'Código PIX copiado para a área de transferência.', 'success');
             });
+        }
+
+        function generateValidCPF() {
+            const rnd = (n) => Math.round(Math.random() * n);
+            const mod = (base, div) => Math.round(base - Math.floor(base / div) * div);
+            const n = Array(9).fill(0).map(() => rnd(9));
+
+            let d1 = n.reduce((total, val, i) => total + (val * (10 - i)), 0);
+            d1 = 11 - mod(d1, 11);
+            if (d1 >= 10) d1 = 0;
+
+            let d2 = n.reduce((total, val, i) => total + (val * (11 - i)), 0) + (d1 * 2);
+            d2 = 11 - mod(d2, 11);
+            if (d2 >= 10) d2 = 0;
+
+            return `${n.join('')}${d1}${d2}`;
         }
     </script>
 </body>
