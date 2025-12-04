@@ -684,11 +684,23 @@
 
                 if (response.ok) {
                     if (paymentMethod === 'pix') {
-                        // Show QR Code
-                        document.getElementById('pixQrImage').src = result.pix.qrcode_image_url; // Adjust based on actual response structure
-                        document.getElementById('pixQrImage').style.display = 'block';
-                        document.getElementById('pixCode').innerText = result.pix.payload; // Adjust based on actual response structure
-                        document.getElementById('pixModal').style.display = 'flex';
+                        console.log("PIX Response:", result); // Log for debugging
+
+                        // Try to find the QR Code and Payload in common locations
+                        const pixQr = result.pix?.qrcode_image_url || result.qrcode_image_url || result.qrcode || result.qr_code;
+                        const pixPayload = result.pix?.payload || result.payload || result.qrcode_text || result.emv;
+
+                        if (pixQr && pixPayload) {
+                            document.getElementById('pixQrImage').src = pixQr;
+                            document.getElementById('pixQrImage').style.display = 'block';
+                            document.getElementById('pixCode').innerText = pixPayload;
+                            document.getElementById('pixModal').style.display = 'flex';
+                        } else {
+                            // Fallback: Show raw response to help debug
+                            document.getElementById('pixCode').innerText = JSON.stringify(result, null, 2);
+                            document.getElementById('pixModal').style.display = 'flex';
+                            Swal.fire('Atenção', 'Verifique o console para detalhes da resposta PIX.', 'warning');
+                        }
                     } else {
                         Swal.fire('Sucesso!', 'Pagamento aprovado com sucesso!', 'success').then(() => {
                             localStorage.removeItem('cart');
