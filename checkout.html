@@ -684,22 +684,20 @@
 
                 if (response.ok) {
                     if (paymentMethod === 'pix') {
-                        console.log("PIX Response:", result); // Log for debugging
+                        // Extract PIX Payload from result.pix.qrcode
+                        const pixPayload = result.pix?.qrcode;
 
-                        // Try to find the QR Code and Payload in common locations
-                        const pixQr = result.pix?.qrcode_image_url || result.qrcode_image_url || result.qrcode || result.qr_code;
-                        const pixPayload = result.pix?.payload || result.payload || result.qrcode_text || result.emv;
+                        if (pixPayload) {
+                            // Generate QR Code Image using a public API
+                            const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(pixPayload)}`;
 
-                        if (pixQr && pixPayload) {
-                            document.getElementById('pixQrImage').src = pixQr;
+                            document.getElementById('pixQrImage').src = qrCodeUrl;
                             document.getElementById('pixQrImage').style.display = 'block';
                             document.getElementById('pixCode').innerText = pixPayload;
                             document.getElementById('pixModal').style.display = 'flex';
                         } else {
-                            // Fallback: Show raw response to help debug
-                            document.getElementById('pixCode').innerText = JSON.stringify(result, null, 2);
-                            document.getElementById('pixModal').style.display = 'flex';
-                            Swal.fire('Atenção', 'Verifique o console para detalhes da resposta PIX.', 'warning');
+                            Swal.fire('Erro', 'Não foi possível gerar o QR Code. Tente novamente.', 'error');
+                            console.error("PIX Error: Payload not found", result);
                         }
                     } else {
                         Swal.fire('Sucesso!', 'Pagamento aprovado com sucesso!', 'success').then(() => {
