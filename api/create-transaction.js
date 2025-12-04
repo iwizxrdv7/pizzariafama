@@ -24,7 +24,7 @@ export default async function handler(req, res) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + btoa(SECRET_KEY + ':')
+                'Authorization': 'Basic ' + Buffer.from(SECRET_KEY + ':').toString('base64')
             },
             body: JSON.stringify(req.body)
         });
