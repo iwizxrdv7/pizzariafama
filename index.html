@@ -6,7 +6,7 @@
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 
-	<script src="js/latest.js" data-utmify-prevent-subids="" async="" defer=""></script>
+	
 
 	<meta name="google" content="notranslate">
 	<meta charset="utf-8">
@@ -117,20 +117,11 @@
 	<script src="npm/sweetalert2%4011.js"></script>
 	<link rel="stylesheet" href="icone91f.css?family=Material+Icons">
 
-
-	<script src="js/latest_1.js" data-utmify-prevent-subids="" async="" defer=""></script>
+	
 	<!-- Meta Pixel Code -->
-	<script>
-		window.pixelId = "67e9ddb04c1edd3fca011cdf";
-		var a = document.createElement("script");
-		a.setAttribute("async", "");
-		a.setAttribute("defer", "");
-		a.setAttribute("src", "../../cdn.utmify.com.br/scripts/pixel/pixel.js");
-		document.head.appendChild(a);
-	</script>
+	
 
-	<script src="../../cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids
-		async defer></script>
+	
 </head>
 
 <body>
@@ -156,8 +147,8 @@
 						</a>
 					</div>
 					<div class="detalhe">
-						<span><i class="fa-solid fa-coins"></i> Pedido Mínimo
-							<b>R$ 10,00</b></span>
+						<span><i class="fa-solid fa-coins"></i> Sem pedido mínimo!
+							<b>Somente HOJE!</b></span>
 						<div>
 							<span><i class="fa-solid fa-motorcycle"></i> <b>30-50</b> min</span> • <span
 								style="color: #077c22">Grátis</span>
@@ -173,7 +164,7 @@
 					</div>
 					<div class="aberto">
 						<i class="fa-solid fa-circle btn-pisca"></i>
-						<span id="status-loja">ABERTO</span>
+						<span id="status-loja">Aberto para pedidos no site!</span>
 						<i class="fa-regular fa-clock horario" id="icone-relogio" style="display: none;"></i>
 						<span class="horario" id="horario-fechamento" style="display: none;"></span>
 					</div>
@@ -187,16 +178,16 @@
 							const horarioFechamento = document.getElementById("horario-fechamento");
 
 							if (horas >= 0 && horas < 2) {
-								statusLoja.textContent = "ABERTO";
+								statusLoja.textContent = "Aberto para pedidos no site!";
 								horarioFechamento.textContent = "até 02:00";
 								iconeRelogio.style.display = "inline";
 								horarioFechamento.style.display = "inline";
 							} else if (horas >= 8 && horas < 23) {
-								statusLoja.textContent = "ABERTO";
+								statusLoja.textContent = "Aberto para pedidos no site!";
 								iconeRelogio.style.display = "none";
 								horarioFechamento.style.display = "none";
 							} else {
-								statusLoja.textContent = "ABERTO";
+								statusLoja.textContent = "Aberto para pedidos no site!";
 								iconeRelogio.style.display = "none";
 								horarioFechamento.style.display = "none";
 							}
@@ -258,7 +249,7 @@
 					<b>Entrega Grátis</b> para <b id="localCidade">sua região</b>!
 				</div>
 				<div class="alert alert-success" style="color: rgb(0, 0, 0);outline: 2px solid #000000;">
-					Aproveite nossa <b>promoção com preços irresistíveis</b> igual Pizza 🖤
+					Aproveite nossa promoção <b>por tempo LIMITADO!</b> Só aqui na Fama! ❤️
 				</div>
 				<div id="pague-1-leve-2" class="categoria">
 					<h2>Combos</h2>
@@ -300,13 +291,13 @@
 								style='border: 2px solid #077c22;'>
 								<div class="texto">
 									<span style="
-										color: #5c0e0e; background: #f2cdcd; padding: 2px 2px; margin-bottom: 2px;
-										border-radius: 8px; text-align: center;"><b>MAIS VENDIDO 🖤</b></span>
+										color: #ffffff; background: #000000; padding: 2px 2px; margin-bottom: 2px;
+										border-radius: 8px; text-align: center;"><b>MAIS PEDIDO! ❤️</b></span>
 									<h3>Combo Fama Familia</h3>
 									<span>2 Pizzas Grandes Tradicionais + Refrigerante 2L + Pizza Média Doce!</span>
 									<span style="
-									color: #474747; background: #e8e8e8; padding: 10px 10px; margin-bottom: 2px; margin-top: 2px;
-									border-radius: 8px; text-align: left;">Mais que o dobro de pizza e refrigerante do Combo 1!</span>
+									color: #ffffff; background: #d52120; padding: 10px 10px; margin-bottom: 2px; margin-top: 2px;
+									border-radius: 8px; text-align: left;">O dobro de pizza e refrigerante do Combo 1!</span>
 									de <span class="precoPromocao">R$ 95,80</span> por
 									<span class="preco" style="font-size: 20px;"> <b
 											style="background: #077c22; color: white; border-radius: 8px; padding: 0px 4px;">R$
@@ -327,7 +318,7 @@
 							</a>
 						</div>
 						<div class="alert alert-success"
-							style="color: red;outline: 2px solid red; background-color: rgb(255, 217, 217);">
+							style="color: rgb(0, 0, 0);outline: 2px solid red; background-color: rgb(255, 255, 255);">
 							<b>A promoção vai acabar em:</b>
 							<div class="countdown">
 								<!-- <div class="box">
@@ -352,7 +343,7 @@
 				</div>
 
 				<div id="acai" class="categoria">
-					<h2>Pizzas Artesanais (8 Pedaços)</h2>
+					<h2>Pizzas Artesanais Prontas (8 Pedaços)</h2>
 					<div class="produtos">
 						<div class="item">
 							<a class='disponivel' href='produtos/calabresa.html'>
@@ -565,7 +556,6 @@
 					</div>
 				</div>
 
-
 			</div>
 		</main>
 		<main id="lista">
@@ -613,7 +603,6 @@
 								</figure>
 							</div>
 						</div>
-
 
 						<!-- Avaliação 3 -->
 						<div class="item"
@@ -877,7 +866,6 @@
 								</figure>
 							</div>
 						</div>
-
 
 						<!-- Modal da Imagem -->
 						<div id="modalImagem"
@@ -6793,13 +6781,6 @@
 
 		escolherLocalizacao();
 	</script>
-
-
-
-
-
-
-
 
 </body>
 <!-- Mirrored from pizzariamilano.fun/n1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Apr 2025 23:24:50 GMT -->
