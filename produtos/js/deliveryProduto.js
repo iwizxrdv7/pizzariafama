@@ -228,19 +228,44 @@ $(document).ready(function () {
 		let obs = $("#detalhesProduto .info2 .observacao").val();
 
 		// Try to grab the total price from #precoProduto (displayed total)
-		// Format usually: "R$ 89,90"
-		let finalPriceText = $("#precoProduto").text().replace('R$', '').trim();
+		// Format usually: "Valor total: R$ 89,90"
+		let finalPriceText = $("#precoProduto").text().replace('Valor total:', '').replace('R$', '').trim();
 		// Remove thousands separator (.) and replace decimal separator (,) with (.)
 		// Example: 1.200,50 -> 1200.50
 		finalPriceText = finalPriceText.replace(/\./g, '').replace(',', '.');
 		let finalPrice = parseFloat(finalPriceText);
 
-		if (isNaN(finalPrice) || finalPrice === 0) {
-			// Fallback to hidden price
+		if (isNaN(finalPrice)) {
+			// Fallback to hidden price only if NaN
 			let precoHidden = parseFloat($("#detalhesProduto .info3 .precoProduto").text());
 			if (!isNaN(precoHidden)) {
 				finalPrice = precoHidden * qtde;
 			}
+		}
+
+
+		if (finalPrice <= 0) {
+			let title = 'Atenção';
+			let msg = 'Selecione as opções necessárias para prosseguir.';
+
+			if (typeof swal === 'function') {
+				swal({
+					title: title,
+					text: msg,
+					icon: 'warning',
+					button: 'OK'
+				});
+			} else if (typeof Swal !== 'undefined' && typeof Swal.fire === 'function') {
+				Swal.fire({
+					title: title,
+					text: msg,
+					icon: 'warning',
+					confirmButtonText: 'OK'
+				});
+			} else {
+				alert(title + '\n' + msg);
+			}
+			return;
 		}
 
 		// Construct Cart Item
@@ -1064,7 +1089,7 @@ function totalProduto() {
 		}
 	}
 
-	$('#detalhesProduto .info3 #precoProduto').html((totalProduto * qtdeProduto).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }));
+	$('#detalhesProduto .info3 #precoProduto').html('Valor total: ' + (totalProduto * qtdeProduto).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }));
 	$('#detalhesProduto .info3 .precoProduto').html(totalProduto);
 }
 

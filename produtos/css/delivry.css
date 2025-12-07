@@ -171,16 +171,25 @@ a.login i {
 }
 
 @keyframes btn-pisca {
-    0% { opacity: 0; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 .btn-pisca {
-  -webkit-animation: btn-pisca .9s linear infinite;
-  -moz-animation: btn-pisca .9s linear infinite;
-  -ms-animation: btn-pisca .9s linear infinite;
-  -o-animation: btn-pisca .9s linear infinite;
-  animation: btn-pisca .9s linear infinite;
+    -webkit-animation: btn-pisca .9s linear infinite;
+    -moz-animation: btn-pisca .9s linear infinite;
+    -ms-animation: btn-pisca .9s linear infinite;
+    -o-animation: btn-pisca .9s linear infinite;
+    animation: btn-pisca .9s linear infinite;
 }
 
 .lojaFechada {
@@ -573,7 +582,8 @@ header#topo .categorias a.ativo {
     font-weight: 600;
     color: #000000;
 }
-.form-busca span{
+
+.form-busca span {
     width: 100%;
     text-align: center;
     font-size: 14px;
@@ -646,7 +656,7 @@ main#lista .produtos .item .texto span.preco {
 }
 
 span.estoque {
-    font-size: 12px !important;
+    font-size: 16px !important;
 }
 
 main#lista .produtos .item .fotoProduto {
@@ -725,27 +735,32 @@ footer#carrinho a.rastreamento {
 
 @-webkit-keyframes pulse {
     0% {
-        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+        -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
     }
+
     70% {
-        -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+        -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
     }
+
     100% {
-        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+        -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
     }
-    }
-    @keyframes pulse {
+}
+
+@keyframes pulse {
     0% {
-        -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
-        box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+        -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+        box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
     }
+
     70% {
-        -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+        -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+        box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
     }
+
     100% {
-        -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+        -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+        box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
     }
 }
 
@@ -957,6 +972,14 @@ a.voltar2 i {
     flex-direction: column;
 }
 
+#detalhesProduto .info1 .title-container {
+    border: 2px solid #000000;
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
 #detalhesProduto .info1 .precoPromocao {
     text-decoration: line-through;
 }
@@ -965,6 +988,13 @@ a.voltar2 i {
     color: #077c22;
     font-size: 25px;
     font-weight: bold;
+}
+
+#detalhesProduto .info1 .price-container {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    display: block;
 }
 
 #detalhesProduto .info2 {
@@ -1043,11 +1073,13 @@ a.voltar2 i {
     gap: 10px;
 }
 
-#detalhesProduto .info2 .opcoes > div.desc {
-    display: flex; justify-content: space-between; align-items: center;
+#detalhesProduto .info2 .opcoes>div.desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#detalhesProduto .info2 .opcoes > img {
+#detalhesProduto .info2 .opcoes>img {
     width: 80px;
     height: 80px;
     border-radius: 10px;
@@ -1146,6 +1178,7 @@ a.voltar2 i {
     max-width: 100%;
     max-height: 100%;
 }
+
 .imagem-ampliada button {
     background-color: #ffffff;
     border: 0;
@@ -1225,7 +1258,8 @@ a.voltar2 i {
     min-width: 45px;
 }
 
-.qtdeProdutoOpcao button:disabled, .qtdeProduto button:disabled {
+.qtdeProdutoOpcao button:disabled,
+.qtdeProduto button:disabled {
     color: #cecece;
     cursor: not-allowed;
 }
@@ -1345,7 +1379,8 @@ a.voltar2 i {
 
 input::placeholder {
     color: #dddddd !important;
-    opacity: 1; /* Firefox */
+    opacity: 1;
+    /* Firefox */
 }
 
 #pedido .entrega {
@@ -1823,7 +1858,8 @@ input::placeholder {
         padding-left: 20px;
     }
 
-    .aberto, .fechado {
+    .aberto,
+    .fechado {
         position: fixed;
         left: 10px;
         top: 10px;
@@ -1832,12 +1868,12 @@ input::placeholder {
     header#topo .info .icones {
         gap: 5px;
     }
-    
+
     header#topo .info .icones a {
         width: 40px;
         height: 40px;
     }
-    
+
     header#topo .info .mostrarHorario {
         flex-direction: row;
     }
@@ -1884,13 +1920,13 @@ input::placeholder {
         display: none;
     }
 
-    #detalhesProduto .info2 .opcoes > div.desc {
+    #detalhesProduto .info2 .opcoes>div.desc {
         flex-direction: column;
         gap: 5px;
         align-items: end;
     }
 
-    #detalhesProduto .info2 .opcoes > div.desc .nome {
+    #detalhesProduto .info2 .opcoes>div.desc .nome {
         width: 100%;
     }
 }
@@ -1912,7 +1948,10 @@ input::placeholder {
     gap: 20px;
 }
 
-#days, #hours, #seconds, #minutes {
+#days,
+#hours,
+#seconds,
+#minutes {
     width: 100%;
     font-size: 1.4rem;
     font-weight: 600;
@@ -1955,5 +1994,3 @@ input::placeholder {
         box-shadow: 0 0 0 0 rgba(7, 124, 34, 0);
     }
 }
-
-
