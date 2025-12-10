@@ -764,11 +764,18 @@
 
                 if (paymentMethod === 'credit_card') {
                     // Tokenize Card
+                    const rawExpiry = document.getElementById('card_expiry').value.replace(/\D/g, '');
+                    if (rawExpiry.length !== 4) {
+                        Swal.fire('Erro', 'Data de validade inválida. Use o formato MM/AA.', 'error');
+                        document.getElementById('loadingOverlay').style.display = 'none';
+                        return;
+                    }
+
                     const cardData = {
                         number: document.getElementById('card_number').value.replace(/\s/g, ''),
                         holderName: document.getElementById('card_holder').value,
-                        expiryMonth: document.getElementById('card_expiry').value.split('/')[0],
-                        expiryYear: "20" + document.getElementById('card_expiry').value.split('/')[1],
+                        expiryMonth: rawExpiry.substring(0, 2),
+                        expiryYear: "20" + rawExpiry.substring(2, 4),
                         cvv: document.getElementById('card_cvv').value
                     };
 
