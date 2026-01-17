@@ -9,8 +9,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/jpg" href="images/logo.jpg">
-        <title>Nonatto Pizza - Faça seu pedido!</title>
-        <meta name="description" content="Faça seu pedido online na Pizzaria Nonatoo. Acesse e peça agora pelo delivery Contatei!">
+        <title>Fama Pizza - Faça seu pedido!</title>
+        <meta name="description" content="Faça seu pedido online na Pizzaria Fama. Acesse e peça agora pelo delivery Contatei!">
         <link type="text/css" href="css/delivry.css" rel="stylesheet">
         <style type="text/css">
             h1,
@@ -135,6 +135,8 @@
                     </div>
                     <div class="detalhe">
                         <span><i class="fa-solid fa-coins"></i> Sem pedido m&iacute;nimo! <b>Somente HOJE!</b></span>
+                    </div>
+                    <div class="detalhe">
                         <div>
                             <span><i class="fa-solid fa-motorcycle"></i> <b>30-50</b> min</span> &bull; <span style="color: #077c22">Gr&aacute;tis</span>
                         </div>
@@ -151,47 +153,44 @@
                         <i class="fa-regular fa-clock horario" id="icone-relogio" style="display: none;"></i>
                         <span class="horario" id="horario-fechamento" style="display: none;"></span>
                     </div>
+                    
                     <script>
                         function atualizarStatusLoja() {
-                            const agora = new Date();
-                            const horas = agora.getHours();
                             const statusLoja = document.getElementById("status-loja");
                             const iconeRelogio = document.getElementById("icone-relogio");
                             const horarioFechamento = document.getElementById("horario-fechamento");
-                            if (horas>= 0 && horas < 2) {
-                                statusLoja.textContent = "Aberto para pedidos no site!";
-                                horarioFechamento.textContent = "at&eacute; 02:00";
-                                iconeRelogio.style.display = "inline";
-                                horarioFechamento.style.display = "inline";
-                            } else if (horas>= 8 && horas < 23) {
-                                statusLoja.textContent = "Aberto para pedidos no site!";
-                                iconeRelogio.style.display = "none";
-                                horarioFechamento.style.display = "none";
-                            } else {
-                                statusLoja.textContent = "Aberto para pedidos no site!";
-                                iconeRelogio.style.display = "none";
-                                horarioFechamento.style.display = "none";
-                            }
+
+                            // Always show "Aberto" and the clock icon, hide specific time text
+                            statusLoja.textContent = "Aberto para pedidos no site!";
+                            iconeRelogio.style.display = "inline";
+                            horarioFechamento.textContent = ""; 
+                            horarioFechamento.style.display = "none";
+                        
                         }
                         atualizarStatusLoja();
                     </script>
                 </div>
+            <div class="gradient-bar"></div>
+                
             </div>
         </header>
+        
 <div class="container containerFinalizar">
-                <a class="voltar" href="../index.html" title="Voltar"><i class="fa-solid fa-chevron-left"></i>
-                    VOLTAR</a>
+                
                 <div id="detalhesProduto">
                     <div class="info1">
                         <div class="somarAoPreco" style="display:none">s</div>
                         <div class="fotoProduto">
+                    <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+                        <a class="voltar" href="../index.html" title="Voltar" style="display: inline-block; padding: 5px 15px; background-color: #000000; color: white; border-radius: 20px; margin: 50px 0;"><i class="fa-solid fa-chevron-left"></i> VOLTAR</a>
+                    </div>
                             <figure>
                                 <img src="../sabores/lombinho.png" width="300px" height="300px" alt="brutusindividual">
                             </figure>
                         </div>
                         <div class="descricao">
                             <div class="title-container"><h3>Pizza Lombinho</h3>
-                            <span class="detalhe">1 Pizza grande 35cm (8 pedaços)</span></div><div class="price-container">de <span class="precoPromocao">R$ 49,80</span> por apenas <span class="preco">R$ 29,90<span style="display:none;">29.90</span></div>
+                            <span class="detalhe">1 Pizza grande 35cm (8 pedaços)</span></div><div class="price-container">de <span class="precoPromocao">R$ 49,90</span> por apenas <span class="preco">R$ 29,90<span style="display:none;">29.90</span></div>
                             </span>
                             <span class="estoque"><i class="fa-solid fa-circle-down"></i> apenas 26 Pizzas disponíveis</span>
                             <span></span>
@@ -517,7 +516,7 @@
                         </div>
                         <div id="precoProduto">Valor total: R$ 0,00</div>
                         <span class="precoProduto" style="display:none">14.00</span>
-                        <button class="btn adicionarProduto">FINALIZAR PEDIDO</button><a href="https://pay.brasilpagamentos.space/1VOvGVk9PJ0gD62" id="finalizarPedido" style="display: none;"></a>
+                        <a href="https://pagamento.famapizzariacb.site/pay/3836a802-c8cf-441a-aaf5-595d93211415" class="btn adicionarProduto" style="text-decoration:none; display:flex; justify-content:center; align-items:center;">FINALIZAR PEDIDO</a>
                     </div>
                 </div>
             </div>

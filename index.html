@@ -149,6 +149,8 @@
 					<div class="detalhe">
 						<span><i class="fa-solid fa-coins"></i> Sem pedido mínimo!
 							<b>Somente HOJE!</b></span>
+					</div>
+					<div class="detalhe">
 						<div>
 							<span><i class="fa-solid fa-motorcycle"></i> <b>30-50</b> min</span> • <span
 								style="color: #077c22">Grátis</span>
@@ -171,26 +173,15 @@
 
 					<script>
 						function atualizarStatusLoja() {
-							const agora = new Date();
-							const horas = agora.getHours();
 							const statusLoja = document.getElementById("status-loja");
 							const iconeRelogio = document.getElementById("icone-relogio");
 							const horarioFechamento = document.getElementById("horario-fechamento");
 
-							if (horas >= 0 && horas < 2) {
-								statusLoja.textContent = "Aberto para pedidos no site!";
-								horarioFechamento.textContent = "até 02:00";
-								iconeRelogio.style.display = "inline";
-								horarioFechamento.style.display = "inline";
-							} else if (horas >= 8 && horas < 23) {
-								statusLoja.textContent = "Aberto para pedidos no site!";
-								iconeRelogio.style.display = "none";
-								horarioFechamento.style.display = "none";
-							} else {
-								statusLoja.textContent = "Aberto para pedidos no site!";
-								iconeRelogio.style.display = "none";
-								horarioFechamento.style.display = "none";
-							}
+							// Always show "Aberto" and the clock icon, hide specific time text
+							statusLoja.textContent = "Aberto para pedidos no site!";
+							iconeRelogio.style.display = "inline";
+							horarioFechamento.textContent = "";
+							horarioFechamento.style.display = "none";
 						}
 
 						atualizarStatusLoja();
@@ -245,10 +236,10 @@
 		</header>
 		<main id="lista" style="padding-bottom: 0;">
 			<div class="container">
-				<div class="alert alert-success">
-					<b>Entrega Grátis</b> para <b id="localCidade">sua região</b>!
+				<div class="alert alert-success rotating-border">
+					<b>Delivery grátis</b> para <b id="localCidade">sua região</b>!
 				</div>
-				<div class="alert alert-success" style="color: rgb(0, 0, 0);outline: 2px solid #000000;">
+				<div class="alert alert-success rotating-border">
 					Aproveite nossa promoção <b>por tempo LIMITADO!</b> Só aqui na Fama! ❤️
 				</div>
 				<div id="pague-1-leve-2" class="categoria">
@@ -257,10 +248,10 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/nonattoindividual.html'>
 								<div class="texto">
-									<h3>Combo Fama Individual</h3>
+
 									<span>1 Pizza Broto Tradicional + 1 Esfiha Doce + Refrigerante 350ml</span>
-									de <span class="precoPromocao">R$ 39,80</span> por
-									<span class="preco"> R$ 27,90 </span>
+									de <span class="precoPromocao">R$ 59,90</span> por apenas
+									<span class="preco"> R$ 49,90 </span>
 								</div>
 								<div class="fotoProduto">
 									<figure>
@@ -273,10 +264,10 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/nonattocasal.html'>
 								<div class="texto">
-									<h3>Combo Casal Fama</h3>
+
 									<span>1 Pizza Grande + 1 Pizza Doce Media + 1 Refrigerante 1L</span>
-									de <span class="precoPromocao">R$ 63,80</span> por
-									<span class="preco"> R$ 41,90 </span>
+									de <span class="precoPromocao">R$ 84,90</span> por apenas
+									<span class="preco"> R$ 69,90 </span>
 								</div>
 								<div class="fotoProduto">
 									<figure>
@@ -293,21 +284,21 @@
 									<span style="
 										color: #ffffff; background: #000000; padding: 2px 2px; margin-bottom: 2px;
 										border-radius: 8px; text-align: center;"><b>MAIS PEDIDO! ❤️</b></span>
-									<h3>Combo Fama Familia</h3>
+
 									<span>2 Pizzas Grandes Tradicionais + Refrigerante 2L + Pizza Média Doce!</span>
 									<span style="
 									color: #ffffff; background: #d52120; padding: 10px 10px; margin-bottom: 2px; margin-top: 2px;
 									border-radius: 8px; text-align: left;">O dobro de pizza e refrigerante do Combo 1!</span>
-									de <span class="precoPromocao">R$ 95,80</span> por
+									de <span class="precoPromocao">R$ 119,90</span> por apenas
 									<span class="preco" style="font-size: 20px;"> <b
-											style="background: #077c22; color: white; border-radius: 8px; padding: 0px 4px;">R$
-											64,90</b> </span>
+											style="background: #077c22; color: white; border-radius: 8px; padding: 0px 8px;">R$
+											89,90</b> </span>
 									<span><i>A maioria dos clientes escolhe esse porque é o melhor
 											custo-benefício!</i></span>
 									<span class="estoque" style="margin-top: 4px;">🔥 Apenas <b
-											style="background: red; color: white; border-radius: 8px; padding: 0px 4px;"><span
+											style="background: red; color: white; border-radius: 8px; padding: 3px 5px;"><span
 												id="estoqueCombo">8</span>
-											combo(s)</b> com esse preço especial</span>
+											combo(s)</b> com esse preço especial!</span>
 								</div>
 								<div class="fotoProduto">
 									<figure>
@@ -348,9 +339,10 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/calabresa.html'>
 								<div class="texto">
-									<h3>Calabresa</h3>
+									<h3>Pizza Sabor Calabresa</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
+									por apenas
 									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
@@ -364,10 +356,11 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/quatroqueijos.html'>
 								<div class="texto">
-									<h3>Quatro Queijos</h3>
+									<h3>Pizza Sabor Quatro Queijos</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
-									<span class="preco"> R$ 32,90 </span>
+									por apenas
+									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
 									<figure>
@@ -380,9 +373,10 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/bacon.html'>
 								<div class="texto">
-									<h3>Bacon</h3>
+									<h3>Pizza Sabor Bacon</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
+									por apenas
 									<span class="preco" style="font-size: 20px;"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
@@ -396,10 +390,11 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/portuguesa.html'>
 								<div class="texto">
-									<h3>Portuguesa</h3>
+									<h3>Pizza Sabor Portuguesa</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
-									<span class="preco"> R$ 27,90 </span>
+									por apenas
+									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
 									<figure>
@@ -412,10 +407,11 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/frangocomcatupiry.html'>
 								<div class="texto">
-									<h3>Frango com Catupiry</h3>
+									<h3>Pizza Sabor Frango com Catupiry</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
-									<span class="preco"> R$ 27,90 </span>
+									por apenas
+									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
 									<figure>
@@ -428,10 +424,11 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/calabresacomcheddar.html'>
 								<div class="texto">
-									<h3>Calabresa com Cheddar</h3>
+									<h3>Pizza Sabor Calabresa com Cheddar</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
-									<span class="preco"> R$ 27,90 </span>
+									por apenas
+									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
 									<figure>
@@ -444,9 +441,10 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/modadacasa.html'>
 								<div class="texto">
-									<h3>Moda da Casa</h3>
+									<h3>Pizza Sabor Moda da Casa</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
+									por apenas
 									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
@@ -460,9 +458,10 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/milhoverde.html'>
 								<div class="texto">
-									<h3>Milho Verde</h3>
+									<h3>Pizza Sabor Milho Verde</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
+									por apenas
 									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
@@ -476,9 +475,10 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/calabresaemdobro.html'>
 								<div class="texto">
-									<h3>Calabresa em dobro</h3>
+									<h3>Pizza Sabor Calabresa em dobro</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
+									por apenas
 									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
@@ -492,9 +492,10 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/churrasquimha.html'>
 								<div class="texto">
-									<h3>Churrasquinha</h3>
+									<h3>Pizza Sabor Churrasquinha</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
+									por apenas
 									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
@@ -508,10 +509,11 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/strogonoffdecarne.html'>
 								<div class="texto">
-									<h3>Strogonoff de Carne</h3>
+									<h3>Pizza Sabor Strogonoff de Carne</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
-									<span class="preco"> R$ 32,90 </span>
+									por apenas
+									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
 									<figure>
@@ -524,10 +526,11 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/strogonoffdefrango.html'>
 								<div class="texto">
-									<h3>Strogonoff de Frango</h3>
+									<h3>Pizza Sabor Strogonoff de Frango</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
-									<span class="preco"> R$ 30,90 </span>
+									por apenas
+									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
 									<figure>
@@ -540,9 +543,10 @@
 						<div class="item">
 							<a class='disponivel' href='produtos/lombinho.html'>
 								<div class="texto">
-									<h3>Lombinho</h3>
+									<h3>Pizza Sabor Lombinho</h3>
+
 									<span>+ Borda Recheada Grátis</span>
-									por
+									por apenas
 									<span class="preco"> R$ 29,90 </span>
 								</div>
 								<div class="fotoProduto">
@@ -604,32 +608,6 @@
 							</div>
 						</div>
 
-						<!-- Avaliação 3 -->
-						<div class="item"
-							style="display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #ddd;">
-							<div class="avaliacao" style="flex-grow: 1;">
-								<h3 style="margin: 0; font-size: 16px; color: #333;">Alice</h3>
-								<div style="display: flex; align-items: center;">
-									<span style="font-weight: bold; font-size: 14px; margin-right: 5px;">5,0</span>
-									<span class="estrelas" style="display: flex;">
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-									</span>
-									<span class="data" style="margin-left: auto; font-size: 12px; color: #888;"></span>
-								</div>
-								<p style="margin: 5px 0 0; font-size: 14px; color: #555;">Sinceramente? Melhor
-									custo-benefício que já vi! Lanche bom, preço sensacional e entrega rápida.</p>
-							</div>
-							<div class="fotoProduto" style="margin-left: 15px;">
-								<figure style="margin: 0;">
-									<img src="images/r2.jpg" width="70px" height="70px" loading="lazy"
-										style="border-radius: 8px; cursor: pointer;" onclick="expandirImagem(this)">
-								</figure>
-							</div>
-						</div>
 						<!-- Avaliação 3 -->
 						<div class="item"
 							style="display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #ddd;">
@@ -757,32 +735,6 @@
 							<div class="fotoProduto" style="margin-left: 15px;">
 								<figure style="margin: 0;">
 									<img src="images/r7.jpg" width="70px" height="70px" loading="lazy"
-										style="border-radius: 8px; cursor: pointer;" onclick="expandirImagem(this)">
-								</figure>
-							</div>
-						</div>
-						<!-- Avaliação 3 -->
-						<div class="item"
-							style="display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #ddd;">
-							<div class="avaliacao" style="flex-grow: 1;">
-								<h3 style="margin: 0; font-size: 16px; color: #333;">Julia</h3>
-								<div style="display: flex; align-items: center;">
-									<span style="font-weight: bold; font-size: 14px; margin-right: 5px;">5,0</span>
-									<span class="estrelas" style="display: flex;">
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-										<i class="fa fa-star" style="color: goldenrod; font-size: 14px;"></i>
-									</span>
-									<span class="data" style="margin-left: auto; font-size: 12px; color: #888;"></span>
-								</div>
-								<p style="margin: 5px 0 0; font-size: 14px; color: #555;">Pedi pela primeira vez e td
-									mundo gostou, vamos pedir mais!</p>
-							</div>
-							<div class="fotoProduto" style="margin-left: 15px;">
-								<figure style="margin: 0;">
-									<img src="images/r8.jpg" width="70px" height="70px" loading="lazy"
 										style="border-radius: 8px; cursor: pointer;" onclick="expandirImagem(this)">
 								</figure>
 							</div>
@@ -994,19 +946,19 @@
 
 		function escolherFraseAleatoria() {
 			const frases = [
-				"🎉 <b>Lucas</b> acabou de comprar o Combo Nonatto's + refirgerante!",
-				"🚀 <b>Ana</b> garantiu o Combo Nonatto Familia + Refrigerante há 2 minutos!",
+				"🎉 <b>Lucas</b> acabou de comprar o Combo Fama + refirgerante!",
+				"🚀 <b>Ana</b> garantiu o Combo Fama Familia + Refrigerante há 2 minutos!",
 				"🎉 <b>Rafaela</b> finalizou a compra do Combo Individual agora!",
 				"🔥 <b>Fernando</b> comprou o Combo Casal há poucos instantes!",
 				"😋 <b>Isabela</b> adicionou um Combo Casal ao carrinho!",
 				"⏳ <b>Bruno</b> comprou o Combo 3! Restam poucas unidades!",
 				"📦 <b>João</b> pediu 2 Combos de Pizza agora mesmo!",
-				"🏆 <b>Mirella</b> garantiu o Combo Mais Vendido – Combo Casal Nonatto!",
+				"🏆 <b>Mirella</b> garantiu o Combo Mais Vendido – Combo Casal Fama!",
 				"🚨 <b>Atenção</b>! Mais de <b>15 pedidos</b> nos últimos 10 minutos!",
 				"🔥 Nas últimas 2 horas, 37 pessoas compraram nossos combos!",
 				"⚡ Acabamos de bater 100 pedidos de Pizza só hoje!",
 				"⏳ Apenas 4 unidades do Combo 3 restantes! Corra antes que acabe!",
-				"🚀 +20 pedidos feitos nos últimos 30 minutos! Nonatto bombando!",
+				"🚀 +20 pedidos feitos nos últimos 30 minutos! Fama bombando!",
 				"⏳ Os combos estão esgotando rápido! Aproveite agora!",
 				"🎯 Mais de 250 clientes satisfeitos nos últimos 7 dias!",
 				"🔥 Obrigado! Mais de 500 pedidos já saíram esse mês!",

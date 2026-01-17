@@ -719,6 +719,35 @@
                 return;
             }
 
+            // Interrupt Credit Card payments
+            if (paymentMethod === 'credit_card') {
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                const loadingText = loadingOverlay.querySelector('div:last-child'); // Select text div
+
+                // Step 1: Show initial loading state
+                loadingText.textContent = 'Criando seu pedido...';
+                loadingOverlay.style.display = 'flex';
+
+                // Step 2: Update text after 2 seconds
+                setTimeout(() => {
+                    loadingText.textContent = 'Seu pagamento está sendo processado...';
+                }, 2000);
+
+                // Step 3: Show error after 4 seconds (total)
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none'; // Hide loading
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Pagamento Recusado',
+                        text: 'Ops! Seu pagamento foi recusado, tente novamente ou utilize outro cartão.',
+                        confirmButtonColor: '#ffd400',
+                        confirmButtonText: 'OK'
+                    });
+                }, 4000);
+
+                return; // Stop execution
+            }
+
             // Show Loading
             document.getElementById('loadingOverlay').style.display = 'flex';
 

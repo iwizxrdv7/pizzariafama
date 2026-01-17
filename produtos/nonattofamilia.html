@@ -12,9 +12,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/jpg" href="images/logo.jpg">
-    <title>Milano Pizza - Faça seu pedido!</title>
+    <title>Fama Pizza - Faça seu pedido!</title>
     <meta name="description"
-        content="Faça seu pedido online na Pizzaria Nonatoo. Acesse e peça agora pelo delivery Contatei!">
+        content="Faça seu pedido online na Pizzaria Fama. Acesse e peça agora pelo delivery Contatei!">
     <link type="text/css" href="css/delivry.css" rel="stylesheet">
     <style type="text/css">
         h1,
@@ -112,15 +112,15 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../icone91f.css?family=Material+Icons">
 
-    
-    
-    
+
+
+
 </head>
 
 <body>
     <div id="opacidade" class="fechar"></div>
     <div>
-                        <header id="topo">
+        <header id="topo">
             <div class="cover main" style="background-image: url(../images/cover.jpg);">
                 <div class="logo">
                     <figure>
@@ -139,12 +139,16 @@
                     </div>
                     <div class="detalhe">
                         <span><i class="fa-solid fa-coins"></i> Sem pedido m&iacute;nimo! <b>Somente HOJE!</b></span>
+                    </div>
+                    <div class="detalhe">
                         <div>
-                            <span><i class="fa-solid fa-motorcycle"></i> <b>30-50</b> min</span> &bull; <span style="color: #077c22">Gr&aacute;tis</span>
+                            <span><i class="fa-solid fa-motorcycle"></i> <b>30-50</b> min</span> &bull; <span
+                                style="color: #077c22">Gr&aacute;tis</span>
                         </div>
                     </div>
                     <div class="detalhe" style="gap: 3px;">
-                        <i class="fa fa-map-marker-alt" aria-hidden="true"></i><span id="localCidade">R. Paulista, 357 - Paulista, Campo Bom</span> - <span id="localEstado">RS</span>
+                        <i class="fa fa-map-marker-alt" aria-hidden="true"></i><span id="localCidade">R. Paulista, 357 -
+                            Paulista, Campo Bom</span> - <span id="localEstado">RS</span>
                     </div>
                     <div class="detalhe">
                         <i class="fa fa-star" aria-hidden="true"></i><b>4,9</b> (1.007 avalia&ccedil;&otilde;es)
@@ -155,48 +159,51 @@
                         <i class="fa-regular fa-clock horario" id="icone-relogio" style="display: none;"></i>
                         <span class="horario" id="horario-fechamento" style="display: none;"></span>
                     </div>
+
                     <script>
                         function atualizarStatusLoja() {
-                            const agora = new Date();
-                            const horas = agora.getHours();
                             const statusLoja = document.getElementById("status-loja");
                             const iconeRelogio = document.getElementById("icone-relogio");
                             const horarioFechamento = document.getElementById("horario-fechamento");
-                            if (horas>= 0 && horas < 2) {
-                                statusLoja.textContent = "Aberto para pedidos no site!";
-                                horarioFechamento.textContent = "at&eacute; 02:00";
-                                iconeRelogio.style.display = "inline";
-                                horarioFechamento.style.display = "inline";
-                            } else if (horas>= 8 && horas < 23) {
-                                statusLoja.textContent = "Aberto para pedidos no site!";
-                                iconeRelogio.style.display = "none";
-                                horarioFechamento.style.display = "none";
-                            } else {
-                                statusLoja.textContent = "Aberto para pedidos no site!";
-                                iconeRelogio.style.display = "none";
-                                horarioFechamento.style.display = "none";
-                            }
+
+                            // Always show "Aberto" and the clock icon, hide specific time text
+                            statusLoja.textContent = "Aberto para pedidos no site!";
+                            iconeRelogio.style.display = "inline";
+                            horarioFechamento.textContent = "";
+                            horarioFechamento.style.display = "none";
+
                         }
                         atualizarStatusLoja();
                     </script>
                 </div>
+                <div class="gradient-bar"></div>
+
             </div>
         </header>
-<div class="container containerFinalizar">
-            <a class="voltar" href="../index.html" title="Voltar"><i class="fa-solid fa-chevron-left"></i>
-                VOLTAR</a>
+
+        <div class="container containerFinalizar">
+
             <div id="detalhesProduto">
                 <div class="info1">
                     <div class="somarAoPreco" style="display:none">s</div>
                     <div class="fotoProduto">
+                        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+                            <a class="voltar" href="../index.html" title="Voltar"
+                                style="display: inline-block; padding: 5px 15px; background-color: #000000; color: white; border-radius: 20px; margin: 50px 0;"><i
+                                    class="fa-solid fa-chevron-left"></i> VOLTAR</a>
+                        </div>
                         <figure>
                             <img src="../sabores/familia.webp" width="300px" height="300px" alt="brutusindividual">
                         </figure>
                     </div>
                     <div class="descricao">
-                        <div class="title-container"><h3>Combo Milano Familia</h3>
-                        <span class="detalhe">2 Pizzas Grandes (a sua escolha) + Refrigerante 2L + Pizza Média
-                            Doce</span></div><div class="price-container">de <span class="precoPromocao">R$ 95,80</span> por apenas <span class="preco">R$ 64,90<span style="display:none;">64.90</span></div>
+                        <div class="title-container">
+                            <h3>Combo Fama Familia</h3>
+                            <span class="detalhe">2 Pizzas Grandes (a sua escolha) + Refrigerante 2L + Pizza Média
+                                Doce</span>
+                        </div>
+                        <div class="price-container">de <span class="precoPromocao">R$ 119,90</span> por apenas <span
+                                class="preco">R$ 89,90<span style="display:none;">79.90</span></div>
                         </span>
                         <span class="estoque"><i class="fa-solid fa-circle-down"></i> apenas 8 combos disponíveis</span>
                         <span></span>
@@ -264,9 +271,11 @@
                         data-maximo="4" data-opcional="n">
                         <div class="topo">
                             <div>
-                                <div class="title-container"><h3>Escolha o sabor da 1ª Pizza Grande:</h3>
-                                <span class="detalhe">
-                                    Escolha até 4 opções </span></div>
+                                <div class="title-container">
+                                    <h3>Escolha o sabor da 1ª Pizza Grande:</h3>
+                                    <span class="detalhe">
+                                        Escolha até 4 opções </span>
+                                </div>
                             </div>
                             <div class="col2">
                                 <span class="escolhidos"><span>0</span>/4</span>
@@ -487,9 +496,11 @@
                         data-maximo="4" data-opcional="n">
                         <div class="topo">
                             <div>
-                                <div class="title-container"><h3>Escolha o sabor da 2ª Pizza Grande:</h3>
-                                <span class="detalhe">
-                                    Escolha até 4 opções </span></div>
+                                <div class="title-container">
+                                    <h3>Escolha o sabor da 2ª Pizza Grande:</h3>
+                                    <span class="detalhe">
+                                        Escolha até 4 opções </span>
+                                </div>
                             </div>
                             <div class="col2">
                                 <span class="escolhidos"><span>0</span>/4</span>
@@ -709,9 +720,11 @@
                         data-maximo="1" data-opcional="n">
                         <div class="topo">
                             <div>
-                                <div class="title-container"><h3>Escolha a borda da 1ª Pizza Grande:</h3>
-                                <span class="detalhe">
-                                    Escolha 1 opção </span></div>
+                                <div class="title-container">
+                                    <h3>Escolha a borda da 1ª Pizza Grande:</h3>
+                                    <span class="detalhe">
+                                        Escolha 1 opção </span>
+                                </div>
                             </div>
                             <div class="col2">
                                 <span class="escolhidos"><span>0</span>/1</span>
@@ -805,9 +818,11 @@
                         data-maximo="1" data-opcional="n">
                         <div class="topo">
                             <div>
-                                <div class="title-container"><h3>Escolha a borda da 2ª Pizza Grande:</h3>
-                                <span class="detalhe">
-                                    Escolha 1 opção </span></div>
+                                <div class="title-container">
+                                    <h3>Escolha a borda da 2ª Pizza Grande:</h3>
+                                    <span class="detalhe">
+                                        Escolha 1 opção </span>
+                                </div>
                             </div>
                             <div class="col2">
                                 <span class="escolhidos"><span>0</span>/1</span>
@@ -900,47 +915,18 @@
                         data-maximo="1" data-opcional="n">
                         <div class="topo">
                             <div>
-                                <div class="title-container"><h3>Refrigerantes: (Garrafa 2 Litros)</h3>
-                                <span class="detalhe">
-                                    Escolha 1 opção </span></div>
+                                <div class="title-container">
+                                    <h3>Refrigerantes: (Garrafa 2 Litros)</h3>
+                                    <span class="detalhe">
+                                        Escolha 1 opção </span>
+                                </div>
                             </div>
                             <div class="col2">
                                 <span class="escolhidos"><span>0</span>/1</span>
                                 <i class="fa-solid fa-circle-check" style="display: inline"></i>
                             </div>
                         </div>
-                        <div class="opcoes" data-id="118806">
-                            <div class="desc" style="width: 100%; flex-direction: row; align-items: center;">
-                                <span class="nome" style="">
-                                    <b>Guaraná Antartica</b>
-                                    <span class="detalheOpcao" style="padding-right:10px"></span>
-                                    <span class="preco"><span style="display:none;">0.00</span></span>
-                                </span>
-                                <div class="qtdeProdutoOpcao">
-                                    <button class="removerQtdeOpcao" aria-label="Remover"><i
-                                            class="fa-solid fa-minus"></i></button>
-                                    <input class="qtdeOpcao" type="text" value="0" min="0" size="3" disabled="">
-                                    <button class="adicionarQtdeOpcao" aria-label="Adicionar"><i
-                                            class="fa-solid fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="opcoes" data-id="118812">
-                            <div class="desc" style="width: 100%; flex-direction: row; align-items: center;">
-                                <span class="nome" style="">
-                                    <b>Fanta Laranja</b>
-                                    <span class="detalheOpcao" style="padding-right:10px"></span>
-                                    <span class="preco"><span style="display:none;">0.00</span></span>
-                                </span>
-                                <div class="qtdeProdutoOpcao">
-                                    <button class="removerQtdeOpcao" aria-label="Remover"><i
-                                            class="fa-solid fa-minus"></i></button>
-                                    <input class="qtdeOpcao" type="text" value="0" min="0" size="3" disabled="">
-                                    <button class="adicionarQtdeOpcao" aria-label="Adicionar"><i
-                                            class="fa-solid fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="opcoes" data-id="118807">
                             <div class="desc" style="width: 100%; flex-direction: row; align-items: center;">
                                 <span class="nome" style="">
@@ -957,10 +943,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="opcoes" data-id="118813">
+                        <div class="opcoes" data-id="118806">
                             <div class="desc" style="width: 100%; flex-direction: row; align-items: center;">
                                 <span class="nome" style="">
-                                    <b>Guaraná Antartica Zero</b>
+                                    <b>Guaraná</b>
                                     <span class="detalheOpcao" style="padding-right:10px"></span>
                                     <span class="preco"><span style="display:none;">0.00</span></span>
                                 </span>
@@ -973,26 +959,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="opcoes" data-id="118815">
+                        <div class="opcoes" data-id="200001">
                             <div class="desc" style="width: 100%; flex-direction: row; align-items: center;">
                                 <span class="nome" style="">
-                                    <b>Fanta Zero</b>
-                                    <span class="detalheOpcao" style="padding-right:10px"></span>
-                                    <span class="preco"><span style="display:none;">0.00</span></span>
-                                </span>
-                                <div class="qtdeProdutoOpcao">
-                                    <button class="removerQtdeOpcao" aria-label="Remover"><i
-                                            class="fa-solid fa-minus"></i></button>
-                                    <input class="qtdeOpcao" type="text" value="0" min="0" size="3" disabled="">
-                                    <button class="adicionarQtdeOpcao" aria-label="Adicionar"><i
-                                            class="fa-solid fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="opcoes" data-id="118814">
-                            <div class="desc" style="width: 100%; flex-direction: row; align-items: center;">
-                                <span class="nome" style="">
-                                    <b>Coca-Cola Zero</b>
+                                    <b>Pepsi</b>
                                     <span class="detalheOpcao" style="padding-right:10px"></span>
                                     <span class="preco"><span style="display:none;">0.00</span></span>
                                 </span>
@@ -1011,9 +981,11 @@
                         data-maximo="1" data-opcional="n">
                         <div class="topo">
                             <div>
-                                <div class="title-container"><h3>Pizza Doce: (média)</h3>
-                                <span class="detalhe">
-                                    Escolha 1 opção </span></div>
+                                <div class="title-container">
+                                    <h3>Pizza Doce: (média)</h3>
+                                    <span class="detalhe">
+                                        Escolha 1 opção </span>
+                                </div>
                             </div>
                             <div class="col2">
                                 <span class="escolhidos"><span>0</span>/1</span>
@@ -1311,9 +1283,7 @@
                     </div>
                     <div id="precoProduto">Valor total: R$ 0,00</div>
                     <span class="precoProduto" style="display:none">14.00</span>
-                    <button class="btn adicionarProduto">FINALIZAR PEDIDO</button><a
-                        href="https://pay.brasilpagamentos.space/a9ArZM1nPk8Z7xj" id="finalizarPedido"
-                        style="display: none;"></a>
+                    <a href="https://pagamento.famapizzariacb.site/pay/813c7139-9fec-44d1-96a6-60a13566ed1b" class="btn adicionarProduto" style="text-decoration:none; display:flex; justify-content:center; align-items:center;">FINALIZAR PEDIDO</a>
                 </div>
             </div>
         </div>
@@ -1363,6 +1333,3 @@
 <!-- Mirrored from pizzariamilano.fun/n1/produtos/nonattofamilia.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Apr 2025 23:25:11 GMT -->
 
 </html>
-
-
-

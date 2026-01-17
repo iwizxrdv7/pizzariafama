@@ -212,6 +212,10 @@ $(document).ready(function () {
 
 	/*adicionar produto - MODIFIED FOR CHECKOUT */
 	$(document).on('click', '.adicionarProduto', function (e) {
+		// If it's a link (external checkout), let it proceed
+		if ($(this).is('a')) {
+			return;
+		}
 		e.preventDefault();
 
 		// Disable inline onclick if it exists (safety check)

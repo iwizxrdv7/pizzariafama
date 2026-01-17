@@ -470,6 +470,7 @@ header#topo .info .detalhe {
     font-size: small;
     gap: 10px;
     padding: 2px 0;
+    margin-bottom: 2px;
 }
 
 header#topo .info .detalhe>div {
@@ -656,7 +657,7 @@ main#lista .produtos .item .texto span.preco {
 }
 
 span.estoque {
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 
 main#lista .produtos .item .fotoProduto {
@@ -919,7 +920,7 @@ a.voltar2 {
     background: red;
     color: #ffffff;
     border-radius: 100px;
-    margin: 10px 0;
+    margin: 50px 0;
     font-size: 12px;
     position: fixed;
     top: 0;
@@ -951,6 +952,7 @@ a.voltar2 i {
 
 #detalhesProduto .info1 .fotoProduto {
     margin-right: 20px;
+    position: relative;
 }
 
 #detalhesProduto .info1 .fotoProduto figure {
@@ -1977,5 +1979,111 @@ input::placeholder {
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(7, 124, 34, 0);
+    }
+}
+
+/* Gradient Bar Animation */
+.gradient-bar {
+    height: 8px;
+    /* Desktop: 30px padding */
+    width: calc(100% + 60px);
+    margin-top: 15px;
+    margin-left: -30px;
+    margin-right: -30px;
+    background: linear-gradient(270deg, #ffd400, #820000, #ffd400, #820000);
+    background-size: 600% 600%;
+    animation: gradientAnimation 4s ease infinite;
+    position: relative;
+    z-index: 10;
+    border-radius: 0;
+}
+
+@media only screen and (max-width: 450px) {
+    .gradient-bar {
+        /* Mobile: 20px padding */
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animated Rotating Gradient Border */
+.rotating-border {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    padding: 10px 2.5%;
+    /* Match .alert padding */
+    border-radius: 10px;
+    outline: none !important;
+    /* Override default alert outline */
+    border: none !important;
+    background: transparent;
+    /* Allow pseudos to show */
+    color: #000;
+    /* Force black text as requested */
+    display: block;
+    /* Ensure block layout */
+}
+
+/* The Rotating Gradient (Background) */
+.rotating-border::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #d52120, #000000, #d52120, #000000, #d52120);
+    background-size: 200% 100%;
+    animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* The Inner Mask (White Background) */
+.rotating-border::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 4px;
+    top: 4px;
+    right: 4px;
+    bottom: 4px;
+    width: auto;
+    height: auto;
+    background: #ffffff;
+    /* Card background */
+    border-radius: 6px;
+    /* 10px - 4px */
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(1turn);
     }
 }
